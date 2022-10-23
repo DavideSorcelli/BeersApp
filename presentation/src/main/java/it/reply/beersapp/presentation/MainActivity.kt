@@ -1,4 +1,4 @@
-package it.reply.beersapp
+package it.reply.beersapp.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,8 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
-import it.reply.beersapp.framework.datasource.local.BeerLocalSourceImpl
-import it.reply.beersapp.ui.theme.BeersAppTheme
+import it.reply.beersapp.presentation.theme.BeersAppTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

@@ -1,4 +1,4 @@
-package it.reply.beersapp.ui.theme
+package it.reply.beersapp.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

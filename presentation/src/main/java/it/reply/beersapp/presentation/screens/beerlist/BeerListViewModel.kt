@@ -1,4 +1,4 @@
-package it.reply.beersapp.ui.beerlist
+package it.reply.beersapp.presentation.screens.beerlist
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
