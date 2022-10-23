@@ -6,6 +6,8 @@ plugins {
 }
 
 android {
+    namespace 'it.reply.beersapp'
+
     compileSdk 33
 
     defaultConfig {
@@ -45,7 +47,6 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-    namespace 'it.reply.beersapp'
 }
 
 kapt {
@@ -54,11 +55,21 @@ kapt {
 
 dependencies {
 
+    // clean architecture layers dependencies
+    implementation(project(":domain"))
+    implementation(project(":framework"))
+    implementation(project(":data"))
+
     implementation 'androidx.core:core-ktx:1.9.0'
+
+    // compose
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation 'androidx.compose.material3:material3:1.0.0-rc01'
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.navigation:navigation-compose:2.5.2"
+    implementation 'androidx.activity:activity-compose:1.6.0'
 
+    // lifecycle
     def lifecycle_version = "2.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
@@ -67,30 +78,18 @@ dependencies {
     testImplementation "androidx.lifecycle:lifecycle-runtime-testing:$lifecycle_version"
     androidTestImplementation "androidx.lifecycle:lifecycle-runtime-testing:$lifecycle_version"
 
+    // coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
-    implementation "androidx.navigation:navigation-compose:2.5.2"
-
-    def room_version = "2.4.3"
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    testImplementation "androidx.room:room-testing:$room_version"
-    androidTestImplementation "androidx.room:room-testing:$room_version"
-
+    // hilt (dependency injection)
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
+    // coil (image loading and caching)
     def coil_version = '2.2.2'
     implementation "io.coil-kt:coil:$coil_version"
     implementation "io.coil-kt:coil-compose:$coil_version"
 
-    def retrofit_version = '2.9.0'
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-
-    implementation "com.squareup.moshi:moshi:1.14.0"
-
-    implementation 'androidx.activity:activity-compose:1.6.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
