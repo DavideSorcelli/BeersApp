@@ -15,5 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "BeersApp"
 include ':app'
 include ':domain'
-include ':framework'
 include ':data'
+include ':framework'
