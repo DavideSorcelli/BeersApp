@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -47,6 +48,10 @@ android {
     namespace 'it.reply.beersapp'
 }
 
+kapt {
+    correctErrorTypes true
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.9.0'
@@ -59,8 +64,25 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    testImplementation "androidx.lifecycle:lifecycle-runtime-testing:$lifecycle_version"
+    androidTestImplementation "androidx.lifecycle:lifecycle-runtime-testing:$lifecycle_version"
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    def room_version = "2.4.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
+    androidTestImplementation "androidx.room:room-testing:$room_version"
+
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    def retrofit_version = '2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    implementation "com.squareup.moshi:moshi:1.14.0"
 
     implementation 'androidx.activity:activity-compose:1.6.0'
     testImplementation 'junit:junit:4.13.2'
