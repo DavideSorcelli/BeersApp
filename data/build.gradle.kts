@@ -1,7 +1,6 @@
 plugins {
     `java-library`
     kotlin
-    kotlin("kapt")
 }
 
 java {

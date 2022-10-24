@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.kotlin
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -12,3 +13,7 @@ val PluginDependenciesSpec.`kotlin-jvm`: PluginDependencySpec get() = id("org.je
 val PluginDependenciesSpec.kotlin: PluginDependencySpec get() = id("kotlin")
 
 val PluginDependenciesSpec.`android-library`: PluginDependencySpec get() = id("com.android.library")
+
+val PluginDependenciesSpec.`kotlin-kapt`: PluginDependencySpec get() = kotlin("kapt")
+
+
