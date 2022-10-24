@@ -13,7 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "BeersApp"
-include ':presentation'
-include ':domain'
-include ':data'
-include ':framework'
+include(":presentation", ":domain", ":data", ":framework")
