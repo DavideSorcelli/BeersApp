@@ -60,7 +60,6 @@ dependencies {
 
     // clean architecture layers dependencies
     implementation(project(":domain"))
-    implementation(project(":data"))
     implementation(project(":framework"))
 
     implementation(Dependencies.CORE_KTX)
@@ -70,7 +69,9 @@ dependencies {
     implementation(Dependencies.MATERIAL3)
     implementation(Dependencies.COMPOSE_UI_TOOLING_PREVIEW)
     implementation(Dependencies.NAVIGATION_COMPOSE)
+    implementation(Dependencies.HILT_NAVIGATION_COMPOSE)
     implementation(Dependencies.ACTIVITY_COMPOSE)
+    implementation(Dependencies.SWIPE_REFRESH)
 
     // lifecycle
     implementation(Dependencies.LIFECYCLE_VIEW_MODEL)
@@ -90,6 +91,9 @@ dependencies {
     // coil (image loading and caching)
     implementation(Dependencies.COIL)
     implementation(Dependencies.COIL_COMPOSE)
+
+    // timber (logging)
+    implementation(Dependencies.TIMBER)
 
     testImplementation(TestDependencies.JUNIT)
     androidTestImplementation(AndroidTestDependencies.JUNIT)

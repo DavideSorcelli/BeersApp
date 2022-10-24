@@ -13,4 +13,10 @@ dependencies {
     // clean architecture layers dependencies
     implementation(project(":domain"))
 
+    // coroutines
+    implementation(Dependencies.COROUTINES)
+
+    // java inject (dependency injection without android dependencies)
+    implementation(Dependencies.JAVA_INJECT)
+
 }
