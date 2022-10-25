@@ -8,6 +8,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
+import it.reply.beersapp.domain.model.Beer
+import it.reply.beersapp.presentation.screens.beerdetail.composable.BeerDetailScreen
 import it.reply.beersapp.presentation.screens.beerlist.composable.BeerListScreen
 import it.reply.beersapp.presentation.theme.BeersAppTheme
 import timber.log.Timber
@@ -23,9 +25,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BeerListScreen(onBeerClick = {
-                        Timber.d("Clicked on beer $it")
-                    })
+                    BeerDetailScreen(beer = Beer.mock())
+//                    BeerListScreen(onBeerClick = {
+//                        Timber.d("Clicked on beer $it")
+//                    })
                 }
             }
         }

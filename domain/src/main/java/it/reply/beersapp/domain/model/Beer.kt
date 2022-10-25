@@ -14,7 +14,7 @@ data class Beer(
                 id = Random.nextLong(),
                 name = "Peroni",
                 description = "Peroni beer was born in 1846 in Vigevano by Francesco Peroni",
-                imageUrl = ""
+                imageUrl = "https://images.punkapi.com/v2/keg.png"
             )
         }
         fun mockList(): List<Beer> {
