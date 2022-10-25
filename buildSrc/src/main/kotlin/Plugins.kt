@@ -8,7 +8,8 @@ val PluginDependenciesSpec.application: PluginDependencySpec get() = id("com.and
 
 val PluginDependenciesSpec.hilt: PluginDependencySpec get() = id("com.google.dagger.hilt.android")
 
-val PluginDependenciesSpec.`kotlin-android`: PluginDependencySpec get() = id("org.jetbrains.kotlin.android")
+val PluginDependenciesSpec.`kotlin-android`: PluginDependencySpec
+    get() = id("org.jetbrains.kotlin.android")
 
 val PluginDependenciesSpec.`kotlin-jvm`: PluginDependencySpec get() = id("org.jetbrains.kotlin.jvm")
 

@@ -7,6 +7,7 @@ fun GetBeersResponseItem.toDomain(): Beer {
     return Beer(
         id = this.id,
         name = this.name,
-        description = this.description
+        description = this.description,
+        imageUrl = this.imageUrl
     )
 }

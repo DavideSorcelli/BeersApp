@@ -1,6 +1,7 @@
 package it.reply.beersapp.presentation.screens.beerlist.composable
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -32,7 +33,8 @@ fun BeerListScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize(),
-            contentPadding = PaddingValues(vertical = 16.dp)
+            contentPadding = PaddingValues(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             itemsIndexed(
                 items = uiState.beers,

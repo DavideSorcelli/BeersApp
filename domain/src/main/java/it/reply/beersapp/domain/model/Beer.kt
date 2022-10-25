@@ -5,14 +5,16 @@ import kotlin.random.Random
 data class Beer(
     val id: Long,
     val name: String,
-    val description: String
+    val description: String,
+    val imageUrl: String?
 ) {
     companion object {
         fun mock(): Beer {
             return Beer(
                 id = Random.nextLong(),
                 name = "Peroni",
-                description = "Peroni beer was born in 1846 in Vigevano by Francesco Peroni"
+                description = "Peroni beer was born in 1846 in Vigevano by Francesco Peroni",
+                imageUrl = ""
             )
         }
         fun mockList(): List<Beer> {

@@ -10,7 +10,8 @@ data class BeerEntity(
     @PrimaryKey
     val id: Long,
     val name: String,
-    val description: String
+    val description: String,
+    val imageUrl: String?
 ) {
     internal companion object {
         const val TABLE_NAME = "beer"

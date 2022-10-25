@@ -7,7 +7,8 @@ fun BeerEntity.toDomain(): Beer {
     return Beer(
         id = this.id,
         name = this.name,
-        description = this.description
+        description = this.description,
+        imageUrl = this.imageUrl
     )
 }
 
@@ -15,6 +16,7 @@ fun Beer.toEntity(): BeerEntity {
     return BeerEntity(
         id = this.id,
         name = this.name,
-        description = this.description
+        description = this.description,
+        imageUrl = this.imageUrl
     )
 }
