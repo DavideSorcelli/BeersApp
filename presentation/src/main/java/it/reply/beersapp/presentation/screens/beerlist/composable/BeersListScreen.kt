@@ -1,5 +1,6 @@
 package it.reply.beersapp.presentation.screens.beerlist.composable
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -18,10 +19,12 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import it.reply.beersapp.presentation.screens.beerlist.BeerListViewModel
 import it.reply.beersapp.presentation.theme.BeersAppTheme
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BeerListScreen(
     viewModel: BeerListViewModel = hiltViewModel(),
-    onBeerClick: (beerId: Long) -> Unit
+    onBeerClick: (beerId: Long) -> Unit,
+    onShowSnackBar: (message: String) -> Unit
 ) {
 
     val uiState by viewModel.uiState.collectAsState()
@@ -34,7 +37,7 @@ fun BeerListScreen(
             modifier = Modifier
                 .fillMaxSize(),
             contentPadding = PaddingValues(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             itemsIndexed(
                 items = uiState.beers,
@@ -43,9 +46,9 @@ fun BeerListScreen(
                 }
             ) { _, beer ->
                 BeerListItem(
-                    modifier = Modifier.clickable {
-                        onBeerClick(beer.id)
-                    },
+                    modifier = Modifier
+                        .animateItemPlacement()
+                        .clickable { onBeerClick(beer.id) },
                     beer = beer
                 )
             }
@@ -59,7 +62,8 @@ fun BeerListScreen(
 fun BeerListScreenPreview() {
     BeersAppTheme {
         BeerListScreen(
-            onBeerClick = {}
+            onBeerClick = {},
+            onShowSnackBar = {}
         )
     }
 }

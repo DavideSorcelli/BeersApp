@@ -3,6 +3,8 @@ package it.reply.beersapp.presentation.screens.beerdetail.composable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -14,41 +16,62 @@ import it.reply.beersapp.domain.model.Beer
 import it.reply.beersapp.presentation.screens.beerdetail.BeerDetailViewModel
 import it.reply.beersapp.presentation.theme.BeersAppTheme
 import it.reply.beersapp.presentation.theme.Typography
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun BeerDetailScreen(
     viewModel: BeerDetailViewModel = hiltViewModel(),
-    beerId: Long
+    beerId: Long,
+    onShowSnackBar: (message: String) -> Unit
 ) {
 
-    Column(
-        modifier = Modifier
-            .padding(16.dp)
-    ) {
+    LaunchedEffect(Unit) {
+        viewModel.info.collectLatest { message ->
+            onShowSnackBar(message)
+        }
+    }
 
-        AsyncImage(
+    LaunchedEffect(beerId) {
+        delay(200) // TODO: sync with info.collectLatest
+        viewModel.getBeerById(beerId = beerId)
+    }
+
+    val beerState = viewModel.beer.collectAsState()
+
+    if (beerState.value != null) {
+
+        val beer = beerState.value!!
+
+        Column(
             modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .align(Alignment.CenterHorizontally),
-            model = Beer.mock().imageUrl,
-            contentDescription = null
-        )
-        
-        Spacer(modifier = Modifier.height(16.dp))
+                .padding(16.dp)
+        ) {
 
-        Text(
-            text = Beer.mock().name,
-            style = Typography.headlineMedium,
-            fontWeight = FontWeight.Bold
-        )
+            AsyncImage(
+                modifier = Modifier
+                    .fillMaxWidth(0.5f)
+                    .align(Alignment.CenterHorizontally),
+                model = beer.imageUrl,
+                contentDescription = null
+            )
 
-        Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        Text(
-            text = Beer.mock().description,
-            style = Typography.bodyLarge
-        )
+            Text(
+                text = beer.name,
+                style = Typography.headlineMedium,
+                fontWeight = FontWeight.Bold
+            )
 
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = beer.description,
+                style = Typography.bodyLarge
+            )
+
+        }
     }
 
 }
@@ -58,7 +81,8 @@ fun BeerDetailScreen(
 fun BeerDetailScreenPreview() {
     BeersAppTheme {
         BeerDetailScreen(
-            beerId = Beer.mock().id
+            beerId = Beer.mock().id,
+            onShowSnackBar = {}
         )
     }
 }

@@ -4,22 +4,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.*
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import dagger.hilt.android.AndroidEntryPoint
-import it.reply.beersapp.presentation.screens.beerdetail.composable.BeerDetailScreen
-import it.reply.beersapp.presentation.screens.beerlist.composable.BeerListScreen
+import it.reply.beersapp.presentation.navigation.MainNavHost
 import it.reply.beersapp.presentation.theme.BeersAppTheme
-import it.reply.beersapp.presentation.utils.navigateSingleTop
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -30,28 +26,18 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     val navController = rememberNavController()
+                    val snackBarHostState = remember { SnackbarHostState() }
 
-                    NavHost(
-                        navController = navController,
-                        startDestination = "beers_list"
-                    ) {
-                        composable(route = "beers_list") {
-                            BeerListScreen(
-                                onBeerClick = { beerId ->
-                                    navController.navigateSingleTop(route = "beer_detail/$beerId")
-                                }
+                    Scaffold(
+                        snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
+                        content = { paddingValues ->
+                            MainNavHost(
+                                modifier = Modifier.padding(paddingValues),
+                                navController = navController,
+                                snackBarHostState = snackBarHostState
                             )
                         }
-                        composable(
-                            route = "beer_detail/{beerId}",
-                            arguments = listOf(navArgument("beerId") { type = NavType.LongType })
-                        ) { backStackEntry ->
-                            BeerDetailScreen(
-                                beerId = backStackEntry.arguments?.getLong("beerId")
-                                    ?: throw RuntimeException("Argument beerId required for destination beer_detail")
-                            )
-                        }
-                    }
+                    )
                 }
             }
         }

@@ -10,7 +10,7 @@ object Versions {
     const val RETROFIT = "2.9.0"
     const val CORE_KTX = "1.9.0"
     const val COIL = "2.2.2"
-    const val MATERIAL3 = "1.0.0-rc01"
+    const val MATERIAL3 = "1.0.0"
     const val SWIPE_REFRESH = "0.25.1"
     const val KOTLIN = "1.7.20"
     const val GRADLE = "7.3.1"

@@ -1,12 +1,13 @@
 package it.reply.beersapp.presentation.screens.beerlist.composable
 
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,21 +22,29 @@ fun BeerListItem(
     modifier: Modifier = Modifier
 ) {
     ListItem(
+        modifier = modifier
+            .height(72.dp),
         leadingContent = {
             AsyncImage(
+                modifier = Modifier.width(36.dp),
                 model = beer.imageUrl,
-                modifier = Modifier.height(60.dp),
-                contentDescription = ""
+                contentDescription = null
             )
         },
         headlineText = {
-            Text(text = beer.name)
+            Text(
+                text = beer.name,
+                fontWeight = FontWeight.SemiBold
+            )
         },
         supportingText = {
-            Text(text = beer.description, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(
+                text = beer.description,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis
+            )
         },
-        modifier = modifier,
-        shadowElevation = 16.dp
+        shadowElevation = 4.dp
     )
 }
 
