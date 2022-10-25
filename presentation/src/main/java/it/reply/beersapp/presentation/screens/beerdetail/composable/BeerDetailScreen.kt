@@ -18,7 +18,7 @@ import it.reply.beersapp.presentation.theme.Typography
 @Composable
 fun BeerDetailScreen(
     viewModel: BeerDetailViewModel = hiltViewModel(),
-    beer: Beer
+    beerId: Long
 ) {
 
     Column(
@@ -30,14 +30,14 @@ fun BeerDetailScreen(
             modifier = Modifier
                 .fillMaxWidth(0.5f)
                 .align(Alignment.CenterHorizontally),
-            model = beer.imageUrl,
+            model = Beer.mock().imageUrl,
             contentDescription = null
         )
         
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = beer.name,
+            text = Beer.mock().name,
             style = Typography.headlineMedium,
             fontWeight = FontWeight.Bold
         )
@@ -45,7 +45,7 @@ fun BeerDetailScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = beer.description,
+            text = Beer.mock().description,
             style = Typography.bodyLarge
         )
 
@@ -58,7 +58,7 @@ fun BeerDetailScreen(
 fun BeerDetailScreenPreview() {
     BeersAppTheme {
         BeerDetailScreen(
-            beer = Beer.mock()
+            beerId = Beer.mock().id
         )
     }
 }
