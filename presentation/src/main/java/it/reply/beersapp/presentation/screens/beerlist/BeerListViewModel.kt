@@ -18,6 +18,9 @@ class BeerListViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(BeerListUiState())
     val uiState = _uiState.asStateFlow()
 
+    private val _info: MutableSharedFlow<String> = MutableSharedFlow()
+    val info = _info.asSharedFlow()
+
     init {
         fetchAndObserveBeersUC.invoke()
             .onStart {
@@ -34,6 +37,12 @@ class BeerListViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.update { BeerListUiState(isLoading = true) }
             fetchAndObserveBeersUC.refreshBeers()
+        }
+    }
+
+    fun onIbuRangeChanged(range: ClosedFloatingPointRange<Float>) {
+        viewModelScope.launch {
+            _info.emit("Range selected: $range")
         }
     }
 
