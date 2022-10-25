@@ -1,3 +1,5 @@
+@file:Suppress("ObjectPropertyName")
+
 import org.gradle.kotlin.dsl.kotlin
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec

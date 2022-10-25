@@ -22,4 +22,5 @@ object Versions {
     const val JAVA_INJECT = "1"
     const val LOGGING_INTERCEPTOR = "4.10.0"
     const val MOSHI_KOTLIN = "1.14.0"
+    const val COMPOSE_COMPILER = "1.3.2"
 }
