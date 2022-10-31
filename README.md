@@ -1,5 +1,8 @@
 # BeersApp
-Demo project for Reply Concept Labcamp on Principles &amp; Architectures of a modern app
+
+### Demo project for Reply Concept Labcamp on Principles &amp; Architectures of a modern app
+
+---
 
 DI ServiceModule
   - provide okhttp
