@@ -8,7 +8,5 @@ data class GetBeersResponseItem(
     val name: String,
     val description: String,
     @Json(name = "image_url")
-    val imageUrl: String?,
-    val abv: Double?,
-    val ibu: Double?
+    val imageUrl: String?
 )

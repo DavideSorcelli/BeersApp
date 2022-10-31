@@ -33,7 +33,6 @@ fun BeerDetailScreen(
     }
 
     LaunchedEffect(beerId) {
-        delay(200) // TODO: sync with info.collectLatest
         viewModel.getBeerById(beerId = beerId)
     }
 

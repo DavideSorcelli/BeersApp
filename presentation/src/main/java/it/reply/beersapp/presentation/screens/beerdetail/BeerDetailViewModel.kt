@@ -18,9 +18,6 @@ class BeerDetailViewModel @Inject constructor(
     val info = _info.asSharedFlow()
 
     fun getBeerById(beerId: Long) {
-//        viewModelScope.launch {
-//            _info.emit("Beer $beerId not found")
-//        }
         _beer.update {
             Beer.mock()
         }
