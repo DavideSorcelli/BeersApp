@@ -98,6 +98,8 @@ dependencies {
     testImplementation(TestDependencies.COROUTINES)
     testImplementation(TestDependencies.LIFECYCLE_RUNTIME)
     testImplementation(TestDependencies.ROOM)
+    testImplementation(TestDependencies.HILT)
+    kaptTest(TestDependencies.HILT_COMPILER)
 
     androidTestImplementation(AndroidTestDependencies.LIFECYCLE_RUNTIME)
     androidTestImplementation(AndroidTestDependencies.JUNIT)
@@ -107,6 +109,8 @@ dependencies {
     androidTestImplementation(AndroidTestDependencies.MOCKK_AGENT)
     androidTestImplementation(AndroidTestDependencies.ROOM)
     androidTestImplementation(AndroidTestDependencies.COROUTINES)
+    androidTestImplementation(AndroidTestDependencies.HILT)
+    kaptAndroidTest(AndroidTestDependencies.HILT_COMPILER)
 
     debugImplementation(DebugDependencies.COMPOSE_UI_TOOLING)
     debugImplementation(DebugDependencies.COMPOSE_UI_TEST_MANIFEST)
