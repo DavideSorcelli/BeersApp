@@ -78,8 +78,6 @@ dependencies {
     implementation(Dependencies.VIEW_MODEL_COMPOSE)
     implementation(Dependencies.LIFECYCLE_RUNTIME)
     implementation(Dependencies.LIFECYCLE_COMMON)
-    testImplementation(TestDependencies.LIFECYCLE_RUNTIME)
-    androidTestImplementation(AndroidTestDependencies.LIFECYCLE_RUNTIME)
 
     // coroutines
     implementation(Dependencies.COROUTINES)
@@ -96,9 +94,20 @@ dependencies {
     implementation(Dependencies.TIMBER)
 
     testImplementation(TestDependencies.JUNIT)
+    testImplementation(TestDependencies.MOCKK)
+    testImplementation(TestDependencies.COROUTINES)
+    testImplementation(TestDependencies.LIFECYCLE_RUNTIME)
+    testImplementation(TestDependencies.ROOM)
+
+    androidTestImplementation(AndroidTestDependencies.LIFECYCLE_RUNTIME)
     androidTestImplementation(AndroidTestDependencies.JUNIT)
     androidTestImplementation(AndroidTestDependencies.ESPRESSO)
     androidTestImplementation(AndroidTestDependencies.COMPOSE)
+    androidTestImplementation(AndroidTestDependencies.MOCKK_ANDROID)
+    androidTestImplementation(AndroidTestDependencies.MOCKK_AGENT)
+    androidTestImplementation(AndroidTestDependencies.ROOM)
+    androidTestImplementation(AndroidTestDependencies.COROUTINES)
+
     debugImplementation(DebugDependencies.COMPOSE_UI_TOOLING)
     debugImplementation(DebugDependencies.COMPOSE_UI_TEST_MANIFEST)
 }

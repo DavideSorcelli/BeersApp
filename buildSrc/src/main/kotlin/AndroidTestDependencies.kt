@@ -7,4 +7,5 @@ object AndroidTestDependencies {
     const val ROOM = "androidx.room:room-testing:${Versions.ROOM}"
     const val MOCKK_ANDROID = "io.mockk:mockk-android:${Versions.MOCKK}"
     const val MOCKK_AGENT = "io.mockk:mockk-agent:${Versions.MOCKK}"
+    const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES}"
 }
