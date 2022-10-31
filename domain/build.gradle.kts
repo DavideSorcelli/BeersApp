@@ -16,4 +16,7 @@ dependencies {
     // java inject (dependency injection without android dependencies)
     implementation(Dependencies.JAVA_INJECT)
 
+    testImplementation(TestDependencies.COROUTINES)
+    testImplementation(TestDependencies.JUNIT)
+    testImplementation(TestDependencies.MOCKK)
 }

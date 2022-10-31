@@ -2,6 +2,7 @@ package it.reply.beersapp.domain.usecase
 
 import it.reply.beersapp.domain.model.Beer
 import it.reply.beersapp.domain.repository.BeerRepository
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
@@ -16,16 +17,17 @@ interface FetchAndObserveBeersUC {
 }
 
 class FetchAndObserveBeersUCImpl @Inject constructor(
-    private val beerRepository: BeerRepository
+    private val beerRepository: BeerRepository,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ): FetchAndObserveBeersUC {
 
     override fun invoke(): Flow<List<Beer>> = flow {
         beerRepository.fetchBeers()
         emitAll(beerRepository.observeBeers())
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(ioDispatcher)
 
     override suspend fun refreshBeers() {
-        withContext(Dispatchers.IO) {
+        withContext(ioDispatcher) {
             beerRepository.fetchBeers()
         }
     }
