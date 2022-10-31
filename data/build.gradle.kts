@@ -15,11 +15,11 @@ dependencies {
 
     // coroutines
     implementation(Dependencies.COROUTINES)
-    testImplementation(TestDependencies.COROUTINES)
 
     // java inject (dependency injection without android dependencies)
     implementation(Dependencies.JAVA_INJECT)
 
     testImplementation(TestDependencies.JUNIT)
+    testImplementation(TestDependencies.COROUTINES)
     testImplementation(TestDependencies.MOCKK)
 }
