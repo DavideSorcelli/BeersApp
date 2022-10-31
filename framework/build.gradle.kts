@@ -65,4 +65,15 @@ dependencies {
     // timber (logging)
     implementation(Dependencies.TIMBER)
 
+    testImplementation(TestDependencies.JUNIT)
+    testImplementation(TestDependencies.COROUTINES)
+    testImplementation(TestDependencies.MOCKK)
+    testImplementation(TestDependencies.ROOM)
+
+    androidTestImplementation(AndroidTestDependencies.JUNIT)
+    androidTestImplementation(AndroidTestDependencies.COROUTINES)
+    androidTestImplementation(AndroidTestDependencies.MOCKK_AGENT)
+    androidTestImplementation(AndroidTestDependencies.MOCKK_ANDROID)
+    androidTestImplementation(AndroidTestDependencies.ROOM)
+
 }
