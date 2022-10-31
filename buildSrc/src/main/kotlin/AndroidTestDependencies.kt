@@ -5,4 +5,6 @@ object AndroidTestDependencies {
     const val LIFECYCLE_RUNTIME =
         "androidx.lifecycle:lifecycle-runtime-testing:${Versions.LIFECYCLE}"
     const val ROOM = "androidx.room:room-testing:${Versions.ROOM}"
+    const val MOCKK_ANDROID = "io.mockk:mockk-android:${Versions.MOCKK}"
+    const val MOCKK_AGENT = "io.mockk:mockk-agent:${Versions.MOCKK}"
 }
