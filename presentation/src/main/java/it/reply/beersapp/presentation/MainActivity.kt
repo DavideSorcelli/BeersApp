@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import it.reply.beersapp.presentation.navigation.MainNavHost
 import it.reply.beersapp.presentation.theme.BeersAppTheme
+import it.reply.beersapp.R
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -30,6 +32,11 @@ class MainActivity : ComponentActivity() {
 
                     Scaffold(
                         snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
+                        topBar = {
+                            TopAppBar(
+                                title = { Text(text = stringResource(id = R.string.app_name)) }
+                            )
+                        },
                         content = { paddingValues ->
                             MainNavHost(
                                 modifier = Modifier.padding(paddingValues),

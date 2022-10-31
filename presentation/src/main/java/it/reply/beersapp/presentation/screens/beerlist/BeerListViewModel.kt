@@ -35,7 +35,9 @@ class BeerListViewModel @Inject constructor(
 
     fun refreshBeers() {
         viewModelScope.launch {
-            _uiState.update { BeerListUiState(isLoading = true) }
+            _uiState.update {
+                it.copy(isLoading = true, isError = false)
+            }
             fetchAndObserveBeersUC.refreshBeers()
         }
     }
