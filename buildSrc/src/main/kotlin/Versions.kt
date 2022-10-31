@@ -13,7 +13,7 @@ object Versions {
     const val MATERIAL3 = "1.0.0"
     const val SWIPE_REFRESH = "0.25.1"
     const val KOTLIN = "1.7.20"
-    const val GRADLE = "7.3.1"
+    const val GRADLE = "7.2.2"
     const val ESPRESSO = "3.4.0"
     const val JUNIT_ANDROID = "1.1.3"
     const val JUNIT = "4.13.2"

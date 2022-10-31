@@ -1,4 +1,4 @@
-package it.reply.beersapp
+package it.reply.beersapp.presentation
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
