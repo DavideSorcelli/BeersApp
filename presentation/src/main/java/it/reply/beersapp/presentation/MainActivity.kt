@@ -14,13 +14,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.components.ActivityComponent
 import it.reply.beersapp.R
 import it.reply.beersapp.presentation.navigation.MainNavHost
+import it.reply.beersapp.presentation.screens.beerdetail.BeerDetailViewModel
 import it.reply.beersapp.presentation.theme.BeersAppTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @EntryPoint
+    @InstallIn(ActivityComponent::class)
+    interface ViewModelFactoryProvider {
+        fun beerDetailViewModelFactory(): BeerDetailViewModel.Factory
+    }
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

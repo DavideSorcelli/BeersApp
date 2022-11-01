@@ -10,19 +10,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import it.reply.beersapp.domain.model.Beer
 import it.reply.beersapp.presentation.screens.beerdetail.BeerDetailViewModel
 import it.reply.beersapp.presentation.theme.BeersAppTheme
 import it.reply.beersapp.presentation.theme.Typography
-import kotlinx.coroutines.delay
+import it.reply.beersapp.presentation.utils.assistedViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun BeerDetailScreen(
-    viewModel: BeerDetailViewModel = hiltViewModel(),
     beerId: Long,
+    viewModel: BeerDetailViewModel = assistedViewModel {
+        BeerDetailViewModel.provideFactory(
+            assistedFactory = beerDetailViewModelFactory(),
+            beerId = beerId
+        )
+    },
     onShowSnackBar: (message: String) -> Unit
 ) {
 
@@ -30,10 +34,6 @@ fun BeerDetailScreen(
         viewModel.info.collectLatest { message ->
             onShowSnackBar(message)
         }
-    }
-
-    LaunchedEffect(beerId) {
-        viewModel.getBeerById(beerId = beerId)
     }
 
     val beerState = viewModel.beer.collectAsState()
