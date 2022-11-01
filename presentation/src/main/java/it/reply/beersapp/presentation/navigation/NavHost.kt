@@ -42,13 +42,9 @@ fun MainNavHost(
         }
         composable(
             route = "beer_detail/{beerId}",
-            arguments = listOf(navArgument("beerId") {
-                type = NavType.LongType
-            })
-        ) { backStackEntry ->
+            arguments = listOf(navArgument("beerId") { type = NavType.LongType })
+        ) {
             BeerDetailScreen(
-                beerId = backStackEntry.arguments?.getLong("beerId")
-                    ?: throw RuntimeException("Argument beerId required for destination beer_detail"),
                 onShowSnackBar = { message ->
                     coroutineScope.launch {
                         snackBarHostState.showSnackbar(message)
